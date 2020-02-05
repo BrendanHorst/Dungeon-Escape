@@ -6,6 +6,7 @@ class Map(object):
 
         self.room_1 = rooms.Room1()
         self.room_2 = rooms.Room2()
+        self.goal_room = rooms.Goal()
 
     def next_room(self, target):
 

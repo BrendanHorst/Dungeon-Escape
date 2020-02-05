@@ -8,6 +8,8 @@ class Room(object):
 
         print(f"You decide to move {direction}")
 
+        print(self.adjacent_rooms[direction])
+
         return self.adjacent_rooms.get(direction)
 
 class Room1(Room):
@@ -27,7 +29,7 @@ class Room2(Room):
     def enter(self):
 
         self.adjacent_rooms['south'] = 'room_1'
-        self.adjacent_rooms['north'] = 'goal'
+        self.adjacent_rooms['north'] = 'goal_room'
 
         print("You are in the second room")
 
@@ -35,9 +37,9 @@ class Room2(Room):
 
         direction = input("> ")
 
-        if direction == 1:
+        if direction == '1':
             return self.move('north')
-        elif direciton == 2:
+        elif direction == '2':
             return self.move('south')
 
 class Goal(Room):

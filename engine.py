@@ -9,5 +9,6 @@ class Engine(object):
 
     def play(self):
 
-        self.room = self.map.next_room(self.room)
-        self.room = self.map.next_room(self.room)
+        while self.room != 'win':
+
+            self.room = self.map.next_room(self.room)
