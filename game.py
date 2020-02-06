@@ -1,4 +1,4 @@
-import engine
+from engine import engine
 
-game = engine.Engine()
+game = Engine()
 game.play()

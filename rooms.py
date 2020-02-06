@@ -1,18 +1,31 @@
-import player
+from player import player
 
-player = player.Player()
+player = Player()
 
 class Room(object):
+    """Creates a room object that contains information on adjacent rooms and has a series of events that
+    happen when you enter it"""
 
     def __init__(self):
+        """Initializes a room object with a dictionary of adjacent rooms as strings or None"""
 
         self.adjacent_rooms = { 'north': None, 'east': None, 'south': None, 'west': None }
 
     def move(self, direction):
+        """Takes a string of a direction; 'north', 'east', 'south', or 'west'
+        and it returns a string of the adjacent room in that direction"""
 
         print(f"You decide to move {direction}")
 
         return self.adjacent_rooms.get(direction)
+
+    def enter(self):
+        """Runs what happens in the room, and returns a string of the next room through the move method
+        or returns a 'dead' string from the die method on the player object"""
+
+        print("I am error")
+
+        return('dead')
 
 # -----Dungeon Area-----
 
@@ -97,7 +110,7 @@ class Dungeon(Room):
                 return self.move('west')
 
 
-class North_Cell(Room):
+class NorthCell(Room):
 
     def __init__(self):
 
@@ -111,7 +124,7 @@ class North_Cell(Room):
         return player.die()
 
 
-class East_Cell(Room):
+class EastCell(Room):
 
     def __init__(self):
 
@@ -186,7 +199,7 @@ class Crossroads(Room):
                 return self.move('west')
 
 
-class Bridge_East(Room):
+class BridgeEast(Room):
 
     def __init__(self):
 
@@ -234,7 +247,7 @@ class Bridge_East(Room):
 
                 return self.move('east')
 
-class Bridge_West(Room):
+class BridgeWest(Room):
 
     def __init__(self):
 
@@ -264,7 +277,7 @@ class Bridge_West(Room):
                 print("\nYou fly back across the ravine using the jetpack")
                 return self.move('east')
 
-class Cavern_Entrance(Room):
+class CavernEntrance(Room):
 
     def __init__(self):
 
@@ -313,7 +326,7 @@ class Cavern_Entrance(Room):
 
 # -----Overgown Area-----
 
-class Root_Forest(Room):
+class RootForest(Room):
 
     def __init__(self):
 
