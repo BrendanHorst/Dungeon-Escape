@@ -1,3 +1,7 @@
+import player
+
+player = player.Player()
+
 class Room(object):
 
     def __init__(self):
@@ -14,7 +18,7 @@ class Room(object):
 
 class Start(Room):
 
-    def enter(self, player):
+    def enter(self):
 
         self.adjacent_rooms['north'] = 'dungeon'
 
@@ -27,14 +31,12 @@ class Start(Room):
 
 class Dungeon(Room):
 
-    def enter(self, player):
+    def enter(self):
 
         self.adjacent_rooms['south'] = 'start'
         self.adjacent_rooms['north'] = 'north_cell'
         self.adjacent_rooms['east'] = 'east_cell'
         self.adjacent_rooms['west'] = 'crossroads'
-
-        print("You are in the second room")
 
         while True:
 
@@ -57,7 +59,7 @@ class Dungeon(Room):
 
 class North_Cell(Room):
 
-    def enter(self, player):
+    def enter(self):
 
         self.adjacent_rooms['south'] = 'dungeon'
 
@@ -66,7 +68,7 @@ class North_Cell(Room):
 
 class East_Cell(Room):
 
-    def enter(self, player):
+    def enter(self):
 
         self.adjacent_rooms['west'] = 'dungeon'
 
@@ -77,20 +79,29 @@ class East_Cell(Room):
 
 class Crossroads(Room):
 
-    def enter(self, player):
+    def enter(self):
 
         self.adjacent_rooms['east'] = 'dungeon'
         self.adjacent_rooms['west'] = 'bridge_east'
         self.adjacent_rooms['north'] = 'root_forest'
 
-        input(player.prompt)
+        while True:
 
-        return self.move('east')
+            print('Where will you go?\n1: North\n2: East\n3: West')
+
+            decision = input(player.prompt)
+
+            if decision == '1':
+                return self.move('north')
+            elif decision == '2':
+                return self.move('east')
+            elif decision == '3':
+                return self.move('west')
 
 
 class Bridge_East(Room):
 
-    def enter(self, player):
+    def enter(self):
 
         self.adjacent_rooms['east'] = 'crossroads'
         self.adjacent_rooms['west'] = 'bridge_west'
@@ -119,13 +130,13 @@ class Bridge_East(Room):
 
 class Bridge_West(Room):
 
-    def enter(self, player):
+    def enter(self):
 
         self.adjacent_rooms['east'] = 'bridge_east'
 
 class Cavern_Entrance(Room):
 
-    def enter(self, player):
+    def enter(self):
 
         self.adjacent_rooms['south'] = 'bridge_west'
         self.adjacent_rooms['north'] = 'goal'
@@ -136,7 +147,7 @@ class Cavern_Entrance(Room):
 
 class Root_Forest(Room):
 
-    def enter(self, player):
+    def enter(self):
 
         self.adjacent_rooms['south'] = 'crossroads'
         self.adjacent_rooms['west'] = 'waterfall'
@@ -144,7 +155,7 @@ class Root_Forest(Room):
 
 class Waterfall(Room):
 
-    def enter(self, player):
+    def enter(self):
 
         self.adjacent_rooms['east'] = 'root_forest'
 
@@ -152,7 +163,7 @@ class Waterfall(Room):
 
 class Goal(Room):
 
-    def enter(self, player):
+    def enter(self):
 
         print("You escaped!")
 

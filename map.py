@@ -1,7 +1,4 @@
 import rooms
-import player
-
-player = player.Player()
 
 class Map(object):
 
@@ -25,4 +22,4 @@ class Map(object):
 
     def next_room(self, target):
 
-        return getattr(self, target).enter(player)
+        return getattr(self, target).enter()
