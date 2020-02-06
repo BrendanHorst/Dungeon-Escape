@@ -10,6 +10,7 @@ class Room(object):
 
         return self.adjacent_rooms.get(direction)
 
+# -----Dungeon Area-----
 
 class Start(Room):
 
@@ -17,7 +18,7 @@ class Start(Room):
 
         self.adjacent_rooms['north'] = 'dungeon'
 
-        print("You are in the first room")
+        print("The cell is empty aside ")
 
         input()
 
@@ -70,6 +71,83 @@ class East_Cell(Room):
         self.adjacent_rooms['west'] = 'dungeon'
 
         return self.move('west')
+
+
+# -----Cavern Area-----
+
+class Crossroads(Room):
+
+    def enter(self, player):
+
+        self.adjacent_rooms['east'] = 'dungeon'
+        self.adjacent_rooms['west'] = 'bridge_east'
+        self.adjacent_rooms['north'] = 'root_forest'
+
+        input(player.prompt)
+
+        return self.move('east')
+
+
+class Bridge_East(Room):
+
+    def enter(self, player):
+
+        self.adjacent_rooms['east'] = 'crossroads'
+        self.adjacent_rooms['west'] = 'bridge_west'
+
+        print("Standing before you is what seems to have once been a bridge, however all that remains is an impassable ravine stretching down into the abyss.")
+
+        while True:
+
+            print("What will you do?")
+            print("1: Throw a rock into the ravine")
+            print("2: Jump over the ravine (west)")
+            print("3: Head east")
+
+            decision = input(player.prompt)
+
+            if decision == '1':
+                print("You pick up the nearest stone and drop it over the edge.  The rock is swallowed by the darkness and never makes a sound.  Strangely, the air around you feels a bit colder and you feel a slight sense of dread.")
+                player.bad_karma = True
+            elif decision == '2' and player.jetpack == False:
+                print("I said the ravine was impassable, did I not?  You fall and die.  You idiot.")
+                #death
+            elif decision == '2' and player.jetpack == True:
+                pass
+            elif decision == '3':
+                return self.move('east')
+
+class Bridge_West(Room):
+
+    def enter(self, player):
+
+        self.adjacent_rooms['east'] = 'bridge_east'
+
+class Cavern_Entrance(Room):
+
+    def enter(self, player):
+
+        self.adjacent_rooms['south'] = 'bridge_west'
+        self.adjacent_rooms['north'] = 'goal'
+
+
+
+# -----Overgown Area-----
+
+class Root_Forest(Room):
+
+    def enter(self, player):
+
+        self.adjacent_rooms['south'] = 'crossroads'
+        self.adjacent_rooms['west'] = 'waterfall'
+
+
+class Waterfall(Room):
+
+    def enter(self, player):
+
+        self.adjacent_rooms['east'] = 'root_forest'
+
 
 
 class Goal(Room):

@@ -4,5 +4,5 @@ class Player(object):
 
         self.jail_key = False
         self.jetpack = False
-        self.location = 'Dungeons'
-        self.prompt = f"({self.location}) > "
+        self.bad_karma = False
+        self.prompt = "> "
