@@ -4,7 +4,8 @@ class Player(object):
 
         self.jail_key = False
         self.jetpack = False
-        self.bad_karma = False
+        self.angered_void = False
+        self.cursed = False
         self.prompt = "> "
 
     def die(self):

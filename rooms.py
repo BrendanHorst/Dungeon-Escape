@@ -185,7 +185,7 @@ class Bridge_East(Room):
             if decision == '1':
 
                 print("You pick up the nearest stone and drop it over the edge.  The rock is swallowed by the darkness and never makes a sound.  Strangely, the air around you feels a bit colder and you feel a slight sense of dread.")
-                player.bad_karma = True
+                player.angered_void = True
 
             elif decision == '2' and player.jetpack == False:
 
@@ -196,7 +196,7 @@ class Bridge_East(Room):
 
                 print("You make a flying leap over the edge, and the jetpack kicks in and lifts you up.")
 
-                if player.bad_karma == True:
+                if player.angered_void == True:
 
                     print("As you fly across, you feel the same sense of dread that you felt when throwing the stone down.  It feels as if... something is angry.  Suddenly, a mass of shadow rises up from the depths, and a tendril reached out and grabs you by the ankle.  It pulls you down into the abyss, but you were already dead the moment it touched you.")
                     return player.die()
@@ -239,6 +239,40 @@ class Cavern_Entrance(Room):
 
         self.adjacent_rooms['south'] = 'bridge_west'
         self.adjacent_rooms['north'] = 'goal'
+
+        print("The cave starts to get wider and the air a little nicer as you walk.  Up ahead, a few beams of light appear from the other end of the cavern.  But in order to get to the exit, you need to get past the dragon.  And the dragon looks hungry.")
+
+        while True:
+
+            print("What will you do?")
+            print("1: Fly over the dragon with the jetpack")
+            print("2: Offer yourself to the dragon")
+            print("3: Flee back to the south")
+
+            decision = input(player.prompt)
+
+            if decision == '1':
+
+                print("You try to fly over the dragon, but the dragon merely breathes fire at you which makes the jetpack explode.")
+                return player.die()
+
+            elif decision == '2':
+
+                print("You realize you have no hope of defeating a dragon with no weapons, so you give up and offer yourself to the dragon, hoping that maybe it'll spare you.")
+
+                if player.cursed == False:
+
+                    print("The dragon walks up to you, sniffs you to make sure you haven't consumed any cursed water, then devours you whole")
+                    return player.die()
+
+                elif player.cursed == True:
+
+                    print("The dragon walks up to you and sniffs you.  He detects that you have cursed water within your body and decides against eating you for now.  You use this opportunity to head north towards the mouth of the cave")
+                    return 'goal'
+
+            elif decision == '3':
+
+                return self.move('south')
 
 
 
@@ -315,6 +349,7 @@ class Waterfall(Room):
 
                     print("You decide to take a drink from the water.  It's delicious.  You feel compelled to drink it agian.")
                     drink_count = 1
+                    player.cursed = True
 
                 elif drink_count == 1:
 
