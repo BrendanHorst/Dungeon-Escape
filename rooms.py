@@ -28,12 +28,24 @@ class Start(Room):
 
             print("What will you do?")
             print("1: Leave the cell")
+            print("2: Try to go back up the hole")
 
             decision = input(player.prompt)
 
             if decision == '1':
 
                 return self.move('north')
+
+            if decision == '2':
+
+                if player.jetpack == True:
+
+                    print("You fly up the hole in the ceiling using the jetpack, but it's a tight fit.  Unfortunately, on the way up the jetpack's fuel supply strkes a rock and explodes.")
+                    return player.die()
+
+                else:
+
+                    print("You try and jump up to the hole, however the ceiling is too high for you to reach.")
 
 
 class Dungeon(Room):
@@ -83,18 +95,8 @@ class North_Cell(Room):
 
         self.adjacent_rooms['south'] = 'dungeon'
 
-        print("\nYou enter the north cell.")
-
-        while True:
-
-            print("What will you do?")
-            print("1: Leave the Cell")
-
-            decision = input(player.prompt)
-
-            if decision == '1':
-
-                return self.move('south')
+        print("\nThe door to the north cell opens without a problem.  You take two steps forward and the floor starts to give.  You quickly turn around to leave, but it's too late.  The floor below you collapses and you fall towards a pit of spikes, lava, sawblades, and sharks somehow.  Must be lava sharks.  You don't die to any of that, though, you hit a rock on your way down.")
+        return player.die()
 
 
 class East_Cell(Room):
@@ -122,6 +124,7 @@ class East_Cell(Room):
                 if player.jetpack == False:
 
                     print("You carefully open up the package.  Inside it is a jetpack!  What luck!  It appears to be pretty old and fragile, but it could definitely help out.")
+                    print("You obtained the jetpack!")
                     player.jetpack = True
 
                 elif player.jetpack == True:
@@ -290,7 +293,7 @@ class Waterfall(Room):
 
         self.adjacent_rooms['east'] = 'root_forest'
 
-        print("You hit a dead end in a pretty room with a waterfall pouring into a small pool of clear water.  You realize that you are quite thirsty.")
+        print("\nYou hit a dead end in a pretty room with a waterfall pouring into a small pool of clear water.  You realize that you are quite thirsty.")
 
         drink_count = 0;
 
@@ -303,7 +306,7 @@ class Waterfall(Room):
             decision = input(player.prompt)
 
             if drink_count == 2:
-                
+
                  decision = '1'
 
             if decision == '1':
