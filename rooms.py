@@ -228,6 +228,7 @@ class Bridge_East(Room):
                     return player.die()
 
                 print("You fly across safely, and you can't help but let out a sigh of releif as your feet alight upon the other side.")
+                return self.move('west')
 
             elif decision == '3':
 
