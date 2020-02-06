@@ -32,6 +32,7 @@ class Start(Room):
             decision = input(player.prompt)
 
             if decision == '1':
+
                 return self.move('north')
 
 
@@ -53,16 +54,26 @@ class Dungeon(Room):
             direction = input(player.prompt)
 
             if direction == '1':
+
                 return self.move('north')
+
             elif direction == '2':
+
                 return self.move('south')
+
             elif direction == '3':
+
                 if player.jail_key == True:
+
                     print("With the key in had, the cell door opens without a hitch.")
                     return self.move('east')
+
                 else:
+
                     print("You attempt to open the east cell door, but it is locked tight!")
+
             elif direction == '4':
+
                 return self.move('west')
 
 
@@ -82,6 +93,7 @@ class North_Cell(Room):
             decision = input(player.prompt)
 
             if decision == '1':
+
                 return self.move('south')
 
 
@@ -102,8 +114,11 @@ class East_Cell(Room):
             decision = input(player.prompt)
 
             if decision == '1':
+
                 return self.move('west')
+
             if decision == '2':
+
                 if player.jetpack == False:
 
                     print("You carefully open up the package.  Inside it is a jetpack!  What luck!  It appears to be pretty old and fragile, but it could definitely help out.")
@@ -112,7 +127,7 @@ class East_Cell(Room):
                 elif player.jetpack == True:
 
                     print("Unsatisfied with the jetpack, you reach back into the package for anything else, only to be greeted with an intense, sharp pain.  Inside the package is a strange looking scorpion, but before you can process it your whole body disintegrates into dust.")
-                    return.die()
+                    return player.die()
 
 
 # -----Cavern Area-----
@@ -134,10 +149,15 @@ class Crossroads(Room):
             decision = input(player.prompt)
 
             if decision == '1':
+
                 return self.move('north')
+
             elif decision == '2':
+
                 return self.move('east')
+
             elif decision == '3':
+
                 return self.move('west')
 
 
@@ -181,6 +201,7 @@ class Bridge_East(Room):
                 print("You fly across safely, and you can't help but let out a sigh of releif as your feet alight upon the other side.")
 
             elif decision == '3':
+
                 return self.move('east')
 
 class Bridge_West(Room):
@@ -201,7 +222,9 @@ class Bridge_West(Room):
             decision = input(player.prompt)
 
             if decision == '1':
+
                 return self.move('north')
+
             if decision == '2':
 
                 print("You fly back across the ravine using the jetpack")
@@ -243,17 +266,21 @@ class Root_Forest(Room):
                 return player.die()
 
             if decision == '2':
+
                 return self.move('south')
+
             if decision == '3':
 
                 print("You try to head east through the roots, only to hit a wall.")
 
                 if player.jail_key == False:
+
                     print("However, you see a small glimmer on the ground.  You push some roots aside and grab what turns out to be a slightly rusted key.  This could come in handy.")
                     print("You obtained the rusty key!")
                     player.jail_key = True
 
             if decision == '4':
+
                 return self.move('west')
 
 
@@ -276,6 +303,7 @@ class Waterfall(Room):
             decision = input(player.prompt)
 
             if drink_count == 2:
+                
                  decision = '1'
 
             if decision == '1':
