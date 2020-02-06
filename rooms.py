@@ -30,7 +30,7 @@ class Start(Room):
 
         while True:
 
-            print("What will you do?")
+            print("\nWhat will you do?")
             print("1: Leave the cell")
             print("2: Try to go back up the hole")
 
@@ -44,12 +44,12 @@ class Start(Room):
 
                 if player.jetpack == True:
 
-                    print("You fly up the hole in the ceiling using the jetpack, but it's a tight fit.  Unfortunately, on the way up the jetpack's fuel supply strkes a rock and explodes.")
+                    print("\nYou fly up the hole in the ceiling using the jetpack, but it's a tight fit.  Unfortunately, on the way up the jetpack's fuel supply strkes a rock and explodes.")
                     return player.die()
 
                 else:
 
-                    print("You try and jump up to the hole, however the ceiling is too high for you to reach.")
+                    print("\nYou try and jump up to the hole, however the ceiling is too high for you to reach.")
 
 
 class Dungeon(Room):
@@ -69,7 +69,7 @@ class Dungeon(Room):
 
         while True:
 
-            print("You can move north, south, east, or west \n1: North\n2: South\n3: East\n4: West")
+            print("\nYou can move north, south, east, or west \n1: North\n2: South\n3: East\n4: West")
 
             direction = input(player.prompt)
 
@@ -85,7 +85,7 @@ class Dungeon(Room):
 
                 if player.jail_key == True:
 
-                    print("With the key in had, the cell door opens without a hitch.")
+                    print("\nWith the key in had, the cell door opens without a hitch.")
                     return self.move('east')
 
                 else:
@@ -125,7 +125,7 @@ class East_Cell(Room):
 
         while True:
 
-            print("What will you do?")
+            print("\nWhat will you do?")
             print("1: Leave the Cell")
             print("2: Open the package")
 
@@ -139,8 +139,8 @@ class East_Cell(Room):
 
                 if player.jetpack == False:
 
-                    print("You carefully open up the package.  Inside it is a jetpack!  What luck!  It appears to be pretty old and fragile, but it could definitely help out.")
-                    print("You obtained the jetpack!")
+                    print("\nYou carefully open up the package.  Inside it is a jetpack!  What luck!  It appears to be pretty old and fragile, but it could definitely help out.")
+                    print("\nYou obtained the jetpack!")
                     player.jetpack = True
 
                 elif player.jetpack == True:
@@ -169,7 +169,7 @@ class Crossroads(Room):
 
         while True:
 
-            print('Where will you go?\n1: North\n2: East\n3: West')
+            print('\nWhere will you go?\n1: North\n2: East\n3: West')
 
             decision = input(player.prompt)
 
@@ -201,7 +201,7 @@ class Bridge_East(Room):
 
         while True:
 
-            print("What will you do?")
+            print("\nWhat will you do?")
             print("1: Throw a rock into the ravine")
             print("2: Jump over the ravine (west)")
             print("3: Head east")
@@ -210,17 +210,17 @@ class Bridge_East(Room):
 
             if decision == '1':
 
-                print("You pick up the nearest stone and drop it over the edge.  The rock is swallowed by the darkness and never makes a sound.  Strangely, the air around you feels a bit colder and you feel a slight sense of dread.")
+                print("\nYou pick up the nearest stone and drop it over the edge.  The rock is swallowed by the darkness and never makes a sound.  Strangely, the air around you feels a bit colder and you feel a slight sense of dread.")
                 player.angered_void = True
 
             elif decision == '2' and player.jetpack == False:
 
-                print("I said the ravine was impassable, did I not?  You fall and die.  You idiot.")
+                print("\nI said the ravine was impassable, did I not?  You fall and die.  You idiot.")
                 return player.die()
 
             elif decision == '2' and player.jetpack == True:
 
-                print("You make a flying leap over the edge, and the jetpack kicks in and lifts you up.")
+                print("\nYou make a flying leap over the edge, and the jetpack kicks in and lifts you up.")
 
                 if player.angered_void == True:
 
@@ -248,7 +248,7 @@ class Bridge_West(Room):
 
         while True:
 
-            print("Where will you go?")
+            print("\nWhere will you go?")
             print("1: Head north")
             print("2: Fly across the ravine (east)")
 
@@ -260,7 +260,7 @@ class Bridge_West(Room):
 
             if decision == '2':
 
-                print("You fly back across the ravine using the jetpack")
+                print("\nYou fly back across the ravine using the jetpack")
                 return self.move('east')
 
 class Cavern_Entrance(Room):
@@ -278,7 +278,7 @@ class Cavern_Entrance(Room):
 
         while True:
 
-            print("What will you do?")
+            print("\nWhat will you do?")
             print("1: Fly over the dragon with the jetpack")
             print("2: Offer yourself to the dragon")
             print("3: Flee back to the south")
@@ -287,12 +287,12 @@ class Cavern_Entrance(Room):
 
             if decision == '1':
 
-                print("You try to fly over the dragon, but the dragon merely breathes fire at you which makes the jetpack explode.")
+                print("\nYou try to fly over the dragon, but the dragon merely breathes fire at you which makes the jetpack explode.")
                 return player.die()
 
             elif decision == '2':
 
-                print("You realize you have no hope of defeating a dragon with no weapons, so you give up and offer yourself to the dragon, hoping that maybe it'll spare you.")
+                print("\nYou realize you have no hope of defeating a dragon with no weapons, so you give up and offer yourself to the dragon, hoping that maybe it'll spare you.")
 
                 if player.cursed == False:
 
@@ -329,7 +329,7 @@ class Root_Forest(Room):
 
         while True:
 
-            print("What will you do?")
+            print("\nWhat will you do?")
             print("1: Head north")
             print("2: Head south")
             print("3: Head east")
@@ -339,7 +339,7 @@ class Root_Forest(Room):
 
             if decision == '1':
 
-                print("You try to head north, and see a small passageway hidden behind the roots.  You work your way over to it only to see a pair of glowing eyes looking out the darkness back at you.  Before you have time to react, whatever it was grabs you and pulls you into its den.")
+                print("\nYou try to head north, and see a small passageway hidden behind the roots.  You work your way over to it only to see a pair of glowing eyes looking out the darkness back at you.  Before you have time to react, whatever it was grabs you and pulls you into its den.")
                 return player.die()
 
             if decision == '2':
@@ -348,12 +348,12 @@ class Root_Forest(Room):
 
             if decision == '3':
 
-                print("You try to head east through the roots, only to hit a wall.")
+                print("\nYou try to head east through the roots, only to hit a wall.")
 
                 if player.jail_key == False:
 
                     print("However, you see a small glimmer on the ground.  You push some roots aside and grab what turns out to be a slightly rusted key.  This could come in handy.")
-                    print("You obtained the rusty key!")
+                    print("\nYou obtained the rusty key!")
                     player.jail_key = True
 
             if decision == '4':
@@ -377,7 +377,7 @@ class Waterfall(Room):
 
         while True:
 
-            print("What do you do?")
+            print("\nWhat do you do?")
             print("1: Stop to take a drink")
             print("2: Head east")
 
@@ -391,18 +391,18 @@ class Waterfall(Room):
 
                 if drink_count == 0:
 
-                    print("You decide to take a drink from the water.  It's delicious.  You feel compelled to drink it agian.")
+                    print("\nYou decide to take a drink from the water.  It's delicious.  You feel compelled to drink it agian.")
                     drink_count = 1
                     player.cursed = True
 
                 elif drink_count == 1:
 
-                    print("The water is so good you gulp it down.  The water is cool.  The water is refreshing.  The water is all you need.")
+                    print("\nThe water is so good you gulp it down.  The water is cool.  The water is refreshing.  The water is all you need.")
                     drink_count = 2
 
                 elif drink_count == 2:
 
-                    print("You can't even make decisions anymore, all you can think of is drinking more water from the pool.  As you bend down to get another gulp, a beautiful water spirit materializes before your eyes and reaches her hand out to you.  Without thinking, you take it, and she abruptly pulls you under the water, which is a lot deeper than it looks from above.  You try to tell your body to wrestle free, but you've been cursed by the water and are completely helpless.  You accept your fate and drown.")
+                    print("\nYou can't even make decisions anymore, all you can think of is drinking more water from the pool.  As you bend down to get another gulp, a beautiful water spirit materializes before your eyes and reaches her hand out to you.  Without thinking, you take it, and she abruptly pulls you under the water, which is a lot deeper than it looks from above.  You try to tell your body to wrestle free, but you've been cursed by the water and are completely helpless.  You accept your fate and drown.")
                     return player.die()
 
             if decision == '2':
