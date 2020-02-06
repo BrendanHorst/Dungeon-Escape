@@ -18,9 +18,13 @@ class Room(object):
 
 class Start(Room):
 
-    def enter(self):
+    def __init__(self):
+
+        super(Start, self).__init__()
 
         self.adjacent_rooms['north'] = 'dungeon'
+
+    def enter(self):
 
         print("\nYou look around inside the dilapidated cell.  The bars are rusted and bent all out of shape, and the door is nonexistant.  Up above you can see the hole you fell down; it's so narrow and tall that you can't see the top.  Other than the remains of a wooden bench there isn't anything else in the cell.")
 
@@ -50,12 +54,16 @@ class Start(Room):
 
 class Dungeon(Room):
 
-    def enter(self):
+    def __init__(self):
+
+        super(Dungeon, self).__init__()
 
         self.adjacent_rooms['south'] = 'start'
         self.adjacent_rooms['north'] = 'north_cell'
         self.adjacent_rooms['east'] = 'east_cell'
         self.adjacent_rooms['west'] = 'crossroads'
+
+    def enter(self):
 
         print("\nYou enter what appears to be the ruins of an ancient dungeon, with rubble everywhere.  There are only 3 cells accessible; anything else seems to have been cut off from a cave-in")
 
@@ -91,9 +99,13 @@ class Dungeon(Room):
 
 class North_Cell(Room):
 
-    def enter(self):
+    def __init__(self):
+
+        super(North_Cell, self).__init__()
 
         self.adjacent_rooms['south'] = 'dungeon'
+
+    def enter(self):
 
         print("\nThe door to the north cell opens without a problem.  You take two steps forward and the floor starts to give.  You quickly turn around to leave, but it's too late.  The floor below you collapses and you fall towards a pit of spikes, lava, sawblades, and sharks somehow.  Must be lava sharks.  You don't die to any of that, though, you hit a rock on your way down.")
         return player.die()
@@ -101,9 +113,13 @@ class North_Cell(Room):
 
 class East_Cell(Room):
 
-    def enter(self):
+    def __init__(self):
+
+        super(East_Cell, self).__init__()
 
         self.adjacent_rooms['west'] = 'dungeon'
+
+    def enter(self):
 
         print("\nYou enter the east cell.  There is a mysterious package hidden underneath the wooden bench.")
 
@@ -137,11 +153,15 @@ class East_Cell(Room):
 
 class Crossroads(Room):
 
-    def enter(self):
+    def __init__(self):
+
+        super(Crossroads, self).__init__()
 
         self.adjacent_rooms['east'] = 'dungeon'
         self.adjacent_rooms['west'] = 'bridge_east'
         self.adjacent_rooms['north'] = 'root_forest'
+
+    def enter(self):
 
         print("\nYou enter a large open cavern with crumbling stone brick paths showing the way.")
 
@@ -166,10 +186,14 @@ class Crossroads(Room):
 
 class Bridge_East(Room):
 
-    def enter(self):
+    def __init__(self):
+
+        super(Bridge_East, self).__init__()
 
         self.adjacent_rooms['east'] = 'crossroads'
         self.adjacent_rooms['west'] = 'bridge_west'
+
+    def enter(self):
 
         print("\nStanding before you is what seems to have once been a bridge, however all that remains is an impassable ravine stretching down into the abyss.")
 
@@ -209,10 +233,14 @@ class Bridge_East(Room):
 
 class Bridge_West(Room):
 
-    def enter(self):
+    def __init__(self):
+
+        super(Bridge_West, self).__init__()
 
         self.adjacent_rooms['east'] = 'bridge_east'
         self.adjacent_rooms['north'] = 'cavern_entrance'
+
+    def enter(self):
 
         print("\nYou are on the western side of the destroyed bridge.")
 
@@ -235,10 +263,14 @@ class Bridge_West(Room):
 
 class Cavern_Entrance(Room):
 
-    def enter(self):
+    def __init__(self):
+
+        super(Cavern_Entrance, self).__init__()
 
         self.adjacent_rooms['south'] = 'bridge_west'
         self.adjacent_rooms['north'] = 'goal'
+
+    def enter(self):
 
         print("The cave starts to get wider and the air a little nicer as you walk.  Up ahead, a few beams of light appear from the other end of the cavern.  But in order to get to the exit, you need to get past the dragon.  And the dragon looks hungry.")
 
@@ -280,10 +312,14 @@ class Cavern_Entrance(Room):
 
 class Root_Forest(Room):
 
-    def enter(self):
+    def __init__(self):
+
+        super(Root_Forest, self).__init__()
 
         self.adjacent_rooms['south'] = 'crossroads'
         self.adjacent_rooms['west'] = 'waterfall'
+
+    def enter(self):
 
         print("\nYou enter a room filled with the roots from what must be a forest on the surface, so that it's hard to move around.")
 
@@ -323,9 +359,13 @@ class Root_Forest(Room):
 
 class Waterfall(Room):
 
-    def enter(self):
+    def __init__(self):
+
+        super(Waterfall, self).__init__()
 
         self.adjacent_rooms['east'] = 'root_forest'
+
+    def enter(self):
 
         print("\nYou hit a dead end in a pretty room with a waterfall pouring into a small pool of clear water.  You realize that you are quite thirsty.")
 
