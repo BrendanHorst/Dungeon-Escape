@@ -6,3 +6,8 @@ class Player(object):
         self.jetpack = False
         self.bad_karma = False
         self.prompt = "> "
+
+    def die(self):
+
+        print("-----YOU DIED!-----")
+        return 'dead'

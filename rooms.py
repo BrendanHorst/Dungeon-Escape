@@ -112,7 +112,7 @@ class East_Cell(Room):
                 elif player.jetpack == True:
 
                     print("Unsatisfied with the jetpack, you reach back into the package for anything else, only to be greeted with an intense, sharp pain.  Inside the package is a strange looking scorpion, but before you can process it your whole body disintegrates into dust.")
-                    #death
+                    return.die()
 
 
 # -----Cavern Area-----
@@ -167,7 +167,7 @@ class Bridge_East(Room):
             elif decision == '2' and player.jetpack == False:
 
                 print("I said the ravine was impassable, did I not?  You fall and die.  You idiot.")
-                #death
+                return player.die()
 
             elif decision == '2' and player.jetpack == True:
 
@@ -176,7 +176,7 @@ class Bridge_East(Room):
                 if player.bad_karma == True:
 
                     print("As you fly across, you feel the same sense of dread that you felt when throwing the stone down.  It feels as if... something is angry.  Suddenly, a mass of shadow rises up from the depths, and a tendril reached out and grabs you by the ankle.  It pulls you down into the abyss, but you were already dead the moment it touched you.")
-                    #death
+                    return player.die()
 
                 print("You fly across safely, and you can't help but let out a sigh of releif as your feet alight upon the other side.")
 
@@ -240,7 +240,7 @@ class Root_Forest(Room):
             if decision == '1':
 
                 print("You try to head north, and see a small passageway hidden behind the roots.  You work your way over to it only to see a pair of glowing eyes looking out the darkness back at you.  Before you have time to react, whatever it was grabs you and pulls you into its den.")
-                #death
+                return player.die()
 
             if decision == '2':
                 return self.move('south')
@@ -263,7 +263,7 @@ class Waterfall(Room):
 
         self.adjacent_rooms['east'] = 'root_forest'
 
-        print("You hit a dead end in a small room with a waterfall pouring into a small pool of clear water")
+        print("You hit a dead end in a pretty room with a waterfall pouring into a small pool of clear water.  You realize that you are quite thirsty.")
 
         drink_count = 0;
 
@@ -285,15 +285,15 @@ class Waterfall(Room):
                     print("You decide to take a drink from the water.  It's delicious.  You feel compelled to drink it agian.")
                     drink_count = 1
 
-                if drink_count == 1:
+                elif drink_count == 1:
 
                     print("The water is so good you gulp it down.  The water is cool.  The water is refreshing.  The water is all you need.")
                     drink_count = 2
 
-                if drink_count ==2:
+                elif drink_count == 2:
 
-                    print("You can't even make decisions anymore, all you can think of is drinking more water from the pool.  Suddenly, a beautiful water spirit materializes before your eyes and reaches her hand out to you.  Without thinking, you take it, and she abruptly pulls you under the water, which is a lot deeper than it looks from above.  You try to tell your body to wrestle free, but you've been cursed by the water and are completely helpless.  You accept your fate and drown.")
-                    #death
+                    print("You can't even make decisions anymore, all you can think of is drinking more water from the pool.  As you bend down to get another gulp, a beautiful water spirit materializes before your eyes and reaches her hand out to you.  Without thinking, you take it, and she abruptly pulls you under the water, which is a lot deeper than it looks from above.  You try to tell your body to wrestle free, but you've been cursed by the water and are completely helpless.  You accept your fate and drown.")
+                    return player.die()
 
             if decision == '2':
 
