@@ -163,6 +163,8 @@ class Crossroads(Room):
 
     def enter(self):
 
+        player.prompt = "(Caverns) > "
+
         print("\nYou enter a large open cavern with crumbling stone brick paths showing the way.")
 
         while True:
@@ -320,6 +322,8 @@ class Root_Forest(Room):
         self.adjacent_rooms['west'] = 'waterfall'
 
     def enter(self):
+
+        player.prompt = "(Overgrowth) > "
 
         print("\nYou enter a room filled with the roots from what must be a forest on the surface, so that it's hard to move around.")
 

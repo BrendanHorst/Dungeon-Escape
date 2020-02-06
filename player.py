@@ -6,7 +6,7 @@ class Player(object):
         self.jetpack = False
         self.angered_void = False
         self.cursed = False
-        self.prompt = "> "
+        self.prompt = "(Dungeons) > "
 
     def die(self):
 
