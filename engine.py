@@ -5,7 +5,7 @@ class Engine(object):
     def __init__(self):
 
         self.map = map.Map()
-        self.room = 'room_1'
+        self.room = 'start'
 
     def play(self):
 

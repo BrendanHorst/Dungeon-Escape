@@ -8,15 +8,14 @@ class Room(object):
 
         print(f"You decide to move {direction}")
 
-        print(self.adjacent_rooms[direction])
-
         return self.adjacent_rooms.get(direction)
 
-class Room1(Room):
 
-    def enter(self):
+class Start(Room):
 
-        self.adjacent_rooms['north'] = 'room_2'
+    def enter(self, player):
+
+        self.adjacent_rooms['north'] = 'dungeon'
 
         print("You are in the first room")
 
@@ -24,27 +23,50 @@ class Room1(Room):
 
         return self.move('north')
 
-class Room2(Room):
 
-    def enter(self):
+class Dungeon(Room):
 
-        self.adjacent_rooms['south'] = 'room_1'
-        self.adjacent_rooms['north'] = 'goal_room'
+    def enter(self, player):
+
+        self.adjacent_rooms['south'] = 'start'
+        self.adjacent_rooms['north'] = 'north_cell'
+        self.adjacent_rooms['east'] = 'east_cell'
 
         print("You are in the second room")
 
-        print("You can move north or south \n1: North\n2: South")
+        print("You can move north or south \n1: North\n2: South\n3: East")
 
-        direction = input("> ")
+        direction = input(player.prompt)
 
         if direction == '1':
             return self.move('north')
         elif direction == '2':
             return self.move('south')
+        elif direction == '3':
+            return self.move('east')
+
+
+class North_Cell(Room):
+
+    def enter(self, player):
+
+        self.adjacent_rooms['south'] = 'dungeon'
+
+        return self.move('south')
+
+
+class East_Cell(Room):
+
+    def enter(self, player):
+
+        self.adjacent_rooms['west'] = 'dungeon'
+
+        return self.move('west')
+
 
 class Goal(Room):
 
-    def enter(self):
+    def enter(self, player):
 
         print("You escaped!")
 
