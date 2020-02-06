@@ -31,19 +31,27 @@ class Dungeon(Room):
         self.adjacent_rooms['south'] = 'start'
         self.adjacent_rooms['north'] = 'north_cell'
         self.adjacent_rooms['east'] = 'east_cell'
+        self.adjacent_rooms['west'] = 'crossroads'
 
         print("You are in the second room")
 
-        print("You can move north or south \n1: North\n2: South\n3: East")
+        while True:
 
-        direction = input(player.prompt)
+            print("You can move north, south, east, or west \n1: North\n2: South\n3: East\n4: West")
 
-        if direction == '1':
-            return self.move('north')
-        elif direction == '2':
-            return self.move('south')
-        elif direction == '3':
-            return self.move('east')
+            direction = input(player.prompt)
+
+            if direction == '1':
+                return self.move('north')
+            elif direction == '2':
+                return self.move('south')
+            elif direction == '3':
+                if player.jail_key == True:
+                    return self.move('east')
+                else:
+                    print("You attempt to open the cell door, but it is locked tight!")
+            elif direction == '4':
+                return self.move('west')
 
 
 class North_Cell(Room):
